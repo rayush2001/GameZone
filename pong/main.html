@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong Game</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add styles for the mobile control buttons */
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .control-btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .control-btn:active {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,6 +35,12 @@
         <canvas id="gameCanvas" width="800" height="600"></canvas>
         <div id="score">Player A: 0 | Player B: 0</div>
         <button id="exitBtn">Exit Game</button>
+    </div>
+    <p color="white">Use w and s keyword for pc users!</p>
+    <!-- Mobile control buttons -->
+    <div class="controls">
+        <button id="upBtn" class="control-btn">Up</button>
+        <button id="downBtn" class="control-btn">Down</button>
     </div>
 
     <script>
@@ -119,6 +145,19 @@
             if (event.key === 'w' && leftPaddleY > 0) {
                 leftPaddleY -= 20;
             } else if (event.key === 's' && leftPaddleY < canvas.height - paddleHeight) {
+                leftPaddleY += 20;
+            }
+        });
+
+        // Mobile control buttons
+        document.getElementById('upBtn').addEventListener('click', function () {
+            if (leftPaddleY > 0) {
+                leftPaddleY -= 20;
+            }
+        });
+
+        document.getElementById('downBtn').addEventListener('click', function () {
+            if (leftPaddleY < canvas.height - paddleHeight) {
                 leftPaddleY += 20;
             }
         });
