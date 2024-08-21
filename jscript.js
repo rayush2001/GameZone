@@ -1,9 +1,10 @@
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelector('.nav-links');
 
-burger.addEventListener('click', () => {
-    navLinks.classList.toggle('nav-active');
-});
+function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('active');
+}
 
  // Search Functionality
  function searchGame() {
