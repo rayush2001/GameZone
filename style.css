@@ -1,0 +1,167 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #101010;
+    color: #fff;
+}
+
+header {
+    background-color: #202020;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.search-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-results {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background-image: url('hero.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 50px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    padding: 10px 20px;
+    background-color: #ff6a00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Games Section */
+.games {
+    padding: 50px;
+    background-color: #202020;
+}
+
+.games h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.game-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.game-card {
+    text-align: center;
+}
+
+.game-card img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #101010;
+    position: relative;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .game-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Slider Styling in games section*/
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.slides img {
+    width: 100%;
+    display: none;
+}
+
+.active {
+    display: block !important;
+}
