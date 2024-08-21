@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameZone Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GameZone</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Search for a game...">
+                <button onclick="searchGame()">Search</button>
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Image Slider Below Nav Bar -->
+    <section class="slider">
+        <div class="slides">
+            <img src="rock paper scissor/Rock-Paper-Scissors.jpg" alt="Rock Paper Scissors" class="active">
+            <img src="snake game/snake.jpg" alt="Snake Game">
+            <img src="pong/pong.jpg" alt="Pong Game">
+            <img src="dino/dinoicon.jpg" alt="Dino game">
+            <img src="mole/whac a mole.png" alt="whac a mole">
+        </div>
+    </section>
+
+    <!-- Game Grid Section -->
+    <section class="games">
+        <h2>Our Games</h2>
+        <div class="game-grid">
+            <div class="game-card">
+                <a href="rock paper scissor/main.html" target="_blank"><img src="rock paper scissor/Rock-Paper-Scissors.jpg" alt="Rock Paper Scissors"></a>
+                <h3>Rock Paper Scissors</h3>
+            </div>
+            <div class="game-card">
+                <a href="snake game/main.html" target="_blank"><img src="snake game/snake.jpg" alt="Snake Game"></a>
+                <h3>Snake Game</h3>
+            </div>
+            <div class="game-card">
+                <a href="pong/main.html" target="_blank"><img src="pong/pong.jpg" alt="Pong Game"></a>
+                <h3>Pong Game</h3>
+            </div>
+            <div class="game-card">
+                <a href="mole/main.html" target="_blank"><img src="mole/whac a mole.png" alt="Whac a Mole"></a>
+                <h3>Whac a Mole</h3>
+            </div>
+            <div class="game-card">
+                <a href="flappy bird/main.html" target="_blank"><img src="flappy bird/flappybirdicon.jpg" alt="Flappy bird"></a>
+                <h3>Flappy Bird</h3>
+            </div>
+            <div class="game-card">
+                <a href="dino/main.html" target="_blank"><img src="dino/dinoicon.jpg" alt="Dinosaur"></a>
+                <h3>dino</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 GameZone.</p>
+    </footer>
+
+    <script>
+        // Search Functionality
+        function searchGame() {
+            const searchTerm = document.getElementById('search-bar').value;
+            const searchResults = document.getElementById('search-results');
+            searchResults.innerHTML = `Results for "${searchTerm}":`;
+
+            const gameNames = ['Rock Paper Scissors', 'Snake Game', 'Pong Game'];
+            const matchingGames = gameNames.filter(game => game.toLowerCase().includes(searchTerm.toLowerCase()));
+
+            searchResults.innerHTML += matchingGames.length > 0 ? matchingGames.join(', ') : 'No games found.';
+        }
+
+        // Slider Functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slides img');
+
+        function showSlides() {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].classList.add('active');
+            setTimeout(showSlides, 3000); // Change slide every 3 seconds
+        }
+
+        showSlides();
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* Reset and Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #101010;
+    color: #fff;
+    text-align: center;
+}
+
+header {
+    background-color: #202020;
+    padding: 20px;
+    color: white;
+}
+
+.game-section {
+    padding: 50px;
+    background-color: #282828;
+}
+
+#gameCanvas {
+    background-color: #33cc33;
+    border: 5px solid #000;
+}
+
+#score {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #gameCanvas {
+        width: 90%;
+        height: auto;
+    }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>The Pong Game</h1>
+    </header>
+    
+    <div class="game-section">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="score">Player A: 0 | Player B: 0</div>
+        <button id="exitBtn">Exit Game</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let playerAscore = 0;
+        let playerBscore = 0;
+
+        // Paddle and Ball
+        const paddleWidth = 10, paddleHeight = 100;
+        const ballRadius = 10;
+        let leftPaddleY = canvas.height / 2 - paddleHeight / 2;
+        let rightPaddleY = canvas.height / 2 - paddleHeight / 2;
+        let ballX = canvas.width / 2;
+        let ballY = canvas.height / 2;
+        let ballXDirection = 2, ballYDirection = 2;
+
+        // AI difficulty
+        const AI_speed = 1.5;
+
+        function drawPaddle(x, y) {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(x, y, paddleWidth, paddleHeight);
+        }
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function updateBallPosition() {
+            ballX += ballXDirection;
+            ballY += ballYDirection;
+
+            // Ball collision with top and bottom
+            if (ballY + ballRadius > canvas.height || ballY - ballRadius < 0) {
+                ballYDirection = -ballYDirection;
+            }
+
+            // Ball collision with right (Player B)
+            if (ballX + ballRadius > canvas.width - paddleWidth) {
+                if (ballY > rightPaddleY && ballY < rightPaddleY + paddleHeight) {
+                    ballXDirection = -ballXDirection;
+                } else {
+                    playerAscore++;
+                    resetBall();
+                }
+            }
+
+            // Ball collision with left (Player A)
+            if (ballX - ballRadius < paddleWidth) {
+                if (ballY > leftPaddleY && ballY < leftPaddleY + paddleHeight) {
+                    ballXDirection = -ballXDirection;
+                } else {
+                    playerBscore++;
+                    resetBall();
+                }
+            }
+        }
+
+        function resetBall() {
+            ballX = canvas.width / 2;
+            ballY = canvas.height / 2;
+            ballXDirection = -ballXDirection;
+            updateScore();
+        }
+
+        function updateScore() {
+            document.getElementById('score').innerText = `Player A: ${playerAscore} | Player B: ${playerBscore}`;
+        }
+
+        function moveRightPaddle() {
+            if (rightPaddleY + paddleHeight / 2 < ballY) {
+                rightPaddleY += AI_speed;
+            } else {
+                rightPaddleY -= AI_speed;
+            }
+        }
+
+        function draw() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw paddles and ball
+            drawPaddle(0, leftPaddleY); // Left paddle
+            drawPaddle(canvas.width - paddleWidth, rightPaddleY); // Right paddle (AI)
+            drawBall();
+
+            // Move ball
+            updateBallPosition();
+
+            // Move computer (AI) paddle
+            moveRightPaddle();
+        }
+
+        // Move the left paddle using keyboard
+        window.addEventListener('keydown', function (event) {
+            if (event.key === 'w' && leftPaddleY > 0) {
+                leftPaddleY -= 20;
+            } else if (event.key === 's' && leftPaddleY < canvas.height - paddleHeight) {
+                leftPaddleY += 20;
+            }
+        });
+
+        // Exit game
+        document.getElementById('exitBtn').addEventListener('click', function () {
+            window.close();
+        });
+
+        function gameLoop() {
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Start the game
+        gameLoop();
+    </script>
+</body>
+</html>

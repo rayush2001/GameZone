@@ -1,0 +1,54 @@
+/* Add styles for control buttons */
+#controls {
+    margin-top: 20px;
+}
+
+#controls button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    #controls button {
+        width: 45%;
+        font-size: 1em;
+    }
+}
+
+/* Existing CSS remains unchanged */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#board {
+    background-color: lightgray;
+    border-bottom: 1px solid black;
+    width: 100%; /* Make canvas responsive */
+    max-width: 600px; /* Limit maximum width on larger screens */
+    height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 600px) {
+    #board {
+        height: 400px; /* Set a fixed height for mobile */
+    }
+}
+
+@media (min-width: 601px) {
+    #board {
+        height: 500px; /* Set a fixed height for larger screens */
+    }
+}
+
+h1 {
+    font-size: 2em; /* Responsive font size */
+}
+
+#instructions {
+    font-size: 1em; /* Ensure instructions are readable */
+}

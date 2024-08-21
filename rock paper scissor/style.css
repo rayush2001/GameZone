@@ -1,0 +1,80 @@
+/* Body and Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #101010;
+    color: #fff;
+    text-align: center;
+}
+
+header {
+    background-color: #202020;
+    padding: 20px;
+    color: white;
+}
+
+.game-section {
+    padding: 50px;
+    background-color: #282828;
+}
+
+#game-display {
+    margin: 20px auto;
+    background-color: #101010;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#choices button {
+    margin: 10px;
+    padding: 15px 25px;
+    background-color: #ff6a00;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#choices button:hover {
+    background-color: #ff8a33;
+}
+
+#score {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+#exit-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#exit-btn:hover {
+    background-color: #ff3333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #game-display {
+        width: 90%;
+    }
+
+    #choices button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
