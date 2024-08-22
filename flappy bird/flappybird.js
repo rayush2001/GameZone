@@ -1,4 +1,3 @@
-
 //board
 let board;
 let boardWidth = 360;
@@ -146,7 +145,7 @@ function placePipes() {
 }
 
 function moveBird(e) {
-    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
+    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX" || e.type === "touchstart") {
         //jump
         velocityY = -6;
 
@@ -166,12 +165,3 @@ function detectCollision(a, b) {
            a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
            a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
 }
-
-
-// Add event listeners for mobile and desktop
-function jump() {
-    birdY -= 60; // Adjust this value to make the jump feel right
-}
-
-// Listen for touch events (mobile)
-canvas.addEventListener('touchstart', jump);
