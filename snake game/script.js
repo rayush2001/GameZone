@@ -85,6 +85,20 @@ function startGame() {
     gameInterval = setInterval(updateGame, 100);
 }
 
+// Add touch control event listeners
+document.getElementById('upBtn').addEventListener('click', () => {
+    if (direction.y === 0) direction = {x: 0, y: -20};
+});
+document.getElementById('downBtn').addEventListener('click', () => {
+    if (direction.y === 0) direction = {x: 0, y: 20};
+});
+document.getElementById('leftBtn').addEventListener('click', () => {
+    if (direction.x === 0) direction = {x: -20, y: 0};
+});
+document.getElementById('rightBtn').addEventListener('click', () => {
+    if (direction.x === 0) direction = {x: 20, y: 0};
+});
+
 // Control the snake with keyboard
 document.addEventListener("keydown", event => {
     if (event.key === "ArrowUp" || event.key === "w") {
