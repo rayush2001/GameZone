@@ -33,10 +33,31 @@ header {
     font-size: 20px;
 }
 
-/* Responsive Design */
+/* Touch Controls */
+.touch-controls {
+    display: none;
+    margin-top: 20px;
+}
+
+.touch-controls button {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.touch-controls button:active {
+    background-color: #555;
+}
+
+/* Show touch controls for mobile screens */
 @media (max-width: 768px) {
-    #gameCanvas {
-        width: 90%;
-        height: auto;
+    .touch-controls {
+        display: block;
     }
 }
