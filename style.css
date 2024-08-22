@@ -108,12 +108,15 @@ header {
 
 .game-grid {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards */
 }
 
 .game-card {
-    text-align: center;
+    padding: 20px; /* Increase padding for better touch targets */
+    cursor: pointer; /* Change cursor to pointer for interactivity */
 }
+
 
 .game-card img {
     width: 200px;
