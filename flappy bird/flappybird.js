@@ -62,6 +62,10 @@ window.onload = function() {
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); //every 1.5 seconds
     document.addEventListener("keydown", moveBird);
+
+    // Add event listeners for mobile (touch) and PC (click)
+    board.addEventListener('click', moveBird);      // Click for desktop
+    board.addEventListener('touchstart', moveBird); // Touch for mobile
 }
 
 function update() {
@@ -145,7 +149,7 @@ function placePipes() {
 }
 
 function moveBird(e) {
-    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX" || e.type === "touchstart") {
+    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX" || e.type === "touchstart" || e.type === "click") {
         //jump
         velocityY = -6;
 
